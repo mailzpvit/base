@@ -4,6 +4,7 @@ import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
 
@@ -26,5 +27,7 @@ public class DataSourceConf {
         return druidDataSource;
     }
     @Bean
-    
+    public JdbcTemplate getTemplate(){
+        return new JdbcTemplate(getDataSource());
+    }
 }
